@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="MODULAR MIND · Halloween Night en Hangar 48, Madrid. Descubre qué significa tu pulsera.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="TE HEMOS MENTIDO ;) · MODULAR MIND">
+  <meta property="og:description" content="No hay cerveza gratis. Pero con esta pulsera sí puedes entrar gratis esta noche en Hangar 48.">
+  <meta property="og:locale" content="es_ES">
+  <title>MODULAR MIND · Halloween Night</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; font-family: 'Source Sans 3', Arial, sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: #050505; }
+    body { margin: 0; background: #050505; color: #fff; -webkit-font-smoothing: antialiased; }
+    main { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: max(48px, env(safe-area-inset-top)) 24px max(44px, env(safe-area-inset-bottom)); }
+    .content { width: 100%; max-width: 430px; text-align: center; }
+    .eyebrow { margin: 0 0 48px; color: #b9b9b9; font-size: 11px; font-weight: 600; line-height: 1.5; letter-spacing: .22em; }
+    h1 { margin: 0; font-size: clamp(34px, 8.6vw, 48px); font-weight: 800; line-height: 1.06; letter-spacing: -.045em; }
+    .no-beer { margin: 19px 0 0; color: #d3d3d3; font-size: clamp(16px, 4.4vw, 19px); font-weight: 600; letter-spacing: .035em; }
+    .divider { display: block; width: 35px; height: 1px; background: #5c5c5c; margin: 37px auto; }
+    .message { margin: 0 auto; max-width: 350px; font-size: clamp(17px, 4.4vw, 20px); line-height: 1.42; font-weight: 400; }
+    .message strong { font-weight: 800; color: #fff; }
+    .venue { margin: 32px 0 0; font-size: 22px; line-height: 1.2; font-weight: 800; letter-spacing: .035em; }
+    .address { margin: 7px 0 0; color: #b9b9b9; font-size: 15px; }
+    .genres { margin: 29px 0 0; color: #e2e2e2; font-size: 12px; line-height: 1.5; font-weight: 600; letter-spacing: .085em; }
+    .links { margin: 36px auto 0; display: grid; gap: 10px; width: 100%; max-width: 315px; }
+    .link { min-height: 49px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; border-radius: 4px; padding: 12px 18px; font: 700 13px/1.4 'Source Sans 3', Arial, sans-serif; letter-spacing: .065em; text-decoration: none; transition: filter .15s ease, background .15s ease, border-color .15s ease; }
+    .link-primary { color: #080808; background: linear-gradient(125deg, #eee 0%, #b7b7b7 45%, #e3e3e3 100%); border: 1px solid #d0d0d0; }
+    .link-secondary { color: #e0e0e0; background: #101010; border: 1px solid #707070; }
+    .link:hover { filter: brightness(1.12); }
+    .link:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+    .arrow { font-size: 17px; line-height: 1; font-weight: 400; }
+    @media (max-width: 360px) { .eyebrow { margin-bottom: 39px; } .divider { margin: 29px auto; } .links { margin-top: 30px; } }
+    @media (prefers-reduced-motion: reduce) { .link { transition: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="content">
+      <p class="eyebrow">MODULAR MIND [HALLOWEEN NIGHT]</p>
+      <h1>TE HEMOS<br>MENTIDO ;)</h1>
+      <p class="no-beer">NO HAY CERVEZA GRATIS.</p>
+      <span class="divider" aria-hidden="true"></span>
+      <p class="message">PERO CON ESTA PULSERA SÍ PUEDES <strong>ENTRAR GRATIS ESTA NOCHE</strong> EN HANGAR 48.</p>
+      <p class="venue">HANGAR 48</p>
+      <p class="address">C. de Bailén, 24 · Madrid</p>
+      <p class="genres">TECHNO · HARD TECHNO · BOUNCE</p>
+      <nav class="links" aria-label="Enlaces del evento">
+        <a class="link link-primary" href="https://es.ra.co/events/2569297" target="_blank" rel="noopener noreferrer">RESIDENT ADVISOR <span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="link link-secondary" href="https://www.instagram.com/modularmind.madrid/" target="_blank" rel="noopener noreferrer">INSTAGRAM <span class="arrow" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </main>
+</body>
+</html>
