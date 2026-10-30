@@ -14,8 +14,17 @@
     (() => {
       try {
         const url = new URL(window.location.href);
+        // Canonical URL: recover from stray characters accidentally copied into the path.
+        let changed = false;
+        if (url.pathname !== '/') {
+          url.pathname = '/';
+          changed = true;
+        }
         if (url.searchParams.get('utm_source') === 'chatgpt.com') {
           url.searchParams.delete('utm_source');
+          changed = true;
+        }
+        if (changed) {
           window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
         }
       } catch (_) {}
