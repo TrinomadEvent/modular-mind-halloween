@@ -9,6 +9,18 @@
   <meta property="og:title" content="TE HEMOS MENTIDO ;) · MODULAR MIND">
   <meta property="og:description" content="No hay cerveza gratis. Pero con esta pulsera sí puedes entrar gratis esta noche en Hangar 48.">
   <meta property="og:locale" content="es_ES">
+  <script>
+    // Remove chat-app attribution from the visible URL without changing the page.
+    (() => {
+      try {
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('utm_source') === 'chatgpt.com') {
+          url.searchParams.delete('utm_source');
+          window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
+        }
+      } catch (_) {}
+    })();
+  </script>
   <title>MODULAR MIND · Halloween Night</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
