@@ -75,6 +75,31 @@
     @media (prefers-reduced-motion: reduce) { .language-button { transition: none; } }
     @media (max-width: 360px) { .eyebrow { margin-bottom: 39px; } .divider { margin: 29px auto; } .links { margin-top: 30px; } }
     @media (prefers-reduced-motion: reduce) { .link { transition: none; } }
+    /* Keep both CTAs visible above mobile browser chrome, without altering the desktop layout. */
+    @media (max-width: 600px) {
+      main {
+        padding: max(18px, env(safe-area-inset-top)) 18px max(22px, env(safe-area-inset-bottom));
+      }
+      .language-switch { margin-bottom: 17px; }
+      .eyebrow { margin-bottom: 23px; font-size: 10px; letter-spacing: .17em; }
+      .no-beer { margin-top: 13px; }
+      .divider { margin: 22px auto; }
+      .venue { margin-top: 24px; }
+      .address { margin-top: 5px; }
+      .genres { margin-top: 21px; }
+      .links { margin-top: 24px; gap: 9px; }
+      .link { min-height: 46px; padding: 10px 16px; }
+    }
+    /* Smaller phones get a tighter rhythm, while short screens remain scrollable. */
+    @media (max-width: 360px) {
+      .language-switch { margin-bottom: 14px; }
+      .eyebrow { margin-bottom: 18px; letter-spacing: .12em; }
+      .divider { margin: 17px auto; }
+      .venue { margin-top: 19px; }
+      .genres { margin-top: 16px; }
+      .links { margin-top: 19px; }
+    }
+
   </style>
 </head>
 <body>
