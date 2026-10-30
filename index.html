@@ -36,26 +36,91 @@
     .link:hover { filter: brightness(1.12); }
     .link:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
     .arrow { font-size: 17px; line-height: 1; font-weight: 400; }
+    /* Compact language switch: fixed to the page, outside the main message. */
+    .language-switch {
+      position: absolute; top: max(18px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right));
+      display: flex; align-items: center; gap: 2px; padding: 3px;
+      border: 1px solid #393939; border-radius: 999px; background: #0a0a0a;
+    }
+    .language-button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+      min-width: 65px; min-height: 42px; padding: 5px 9px; border: 0; border-radius: 999px;
+      background: transparent; color: #989898; font: 700 12px/1 'Source Sans 3', Arial, sans-serif;
+      letter-spacing: .04em; cursor: pointer; transition: background .15s ease, color .15s ease;
+    }
+    .language-button[aria-pressed="true"] { background: #262626; color: #f2f2f2; }
+    .language-button:hover { color: #fff; }
+    .language-button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    .language-flag { font-size: 16px; line-height: 1; }
+    @media (prefers-reduced-motion: reduce) { .language-button { transition: none; } }
     @media (max-width: 360px) { .eyebrow { margin-bottom: 39px; } .divider { margin: 29px auto; } .links { margin-top: 30px; } }
     @media (prefers-reduced-motion: reduce) { .link { transition: none; } }
   </style>
 </head>
 <body>
   <main>
+    <div class="language-switch" role="group" aria-label="Idioma / Language">
+      <button type="button" class="language-button" data-lang="es" aria-label="Español" aria-pressed="true"><span class="language-flag" aria-hidden="true">🇪🇸</span> ES</button>
+      <button type="button" class="language-button" data-lang="en" aria-label="English" aria-pressed="false"><span class="language-flag" aria-hidden="true">🇬🇧</span> EN</button>
+    </div>
     <div class="content">
       <p class="eyebrow">MODULAR MIND [HALLOWEEN NIGHT]</p>
-      <h1>TE HEMOS<br>MENTIDO ;)</h1>
-      <p class="no-beer">NO HAY CERVEZA GRATIS.</p>
+      <h1 id="headline">TE HEMOS<br>MENTIDO ;)</h1>
+      <p class="no-beer" id="no-beer">NO HAY CERVEZA GRATIS.</p>
       <span class="divider" aria-hidden="true"></span>
-      <p class="message">PERO CON ESTA PULSERA SÍ PUEDES <strong>ENTRAR GRATIS ESTA NOCHE</strong> EN HANGAR 48.</p>
+      <p class="message" id="message">PERO CON ESTA PULSERA SÍ PUEDES <strong>ENTRAR GRATIS ESTA NOCHE</strong> EN HANGAR 48.</p>
       <p class="venue">HANGAR 48</p>
       <p class="address">C. de Bailén, 24 · Madrid</p>
       <p class="genres">TECHNO · HARD TECHNO · BOUNCE</p>
-      <nav class="links" aria-label="Enlaces del evento">
+      <nav class="links" id="event-links" aria-label="Enlaces del evento">
         <a class="link link-primary" href="https://es.ra.co/events/2569297" target="_blank" rel="noopener noreferrer">RESIDENT ADVISOR <span class="arrow" aria-hidden="true">↗</span></a>
         <a class="link link-secondary" href="https://www.instagram.com/modularmind.madrid/" target="_blank" rel="noopener noreferrer">INSTAGRAM <span class="arrow" aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </main>
+  <script>
+    (() => {
+      const translations = {
+        es: {
+          headline: 'TE HEMOS<br>MENTIDO ;)',
+          noBeer: 'NO HAY CERVEZA GRATIS.',
+          message: 'PERO CON ESTA PULSERA SÍ PUEDES <strong>ENTRAR GRATIS ESTA NOCHE</strong> EN HANGAR 48.',
+          linksLabel: 'Enlaces del evento',
+          description: 'MODULAR MIND · Halloween Night en Hangar 48, Madrid. Descubre qué significa tu pulsera.',
+          ogTitle: 'TE HEMOS MENTIDO ;) · MODULAR MIND',
+          ogDescription: 'No hay cerveza gratis. Pero con esta pulsera sí puedes entrar gratis esta noche en Hangar 48.'
+        },
+        en: {
+          headline: 'WE LIED<br>TO YOU ;)',
+          noBeer: 'NO FREE BEER.',
+          message: 'BUT WITH THIS WRISTBAND YOU CAN <strong>GET IN FREE TONIGHT</strong> AT HANGAR 48.',
+          linksLabel: 'Event links',
+          description: 'MODULAR MIND · Halloween Night at Hangar 48, Madrid. Find out what your wristband gets you.',
+          ogTitle: 'WE LIED TO YOU ;) · MODULAR MIND',
+          ogDescription: 'No free beer. But this wristband gets you free entry tonight at Hangar 48.'
+        }
+      };
+      const buttons = document.querySelectorAll('[data-lang]');
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        const t = translations[lang];
+        document.documentElement.lang = lang;
+        document.getElementById('headline').innerHTML = t.headline;
+        document.getElementById('no-beer').textContent = t.noBeer;
+        document.getElementById('message').innerHTML = t.message;
+        document.getElementById('event-links').setAttribute('aria-label', t.linksLabel);
+        document.querySelector('meta[name="description"]').content = t.description;
+        document.querySelector('meta[property="og:title"]').content = t.ogTitle;
+        document.querySelector('meta[property="og:description"]').content = t.ogDescription;
+        document.querySelector('meta[property="og:locale"]').content = lang === 'es' ? 'es_ES' : 'en_GB';
+        buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === lang)));
+        try { localStorage.setItem('modular-mind-language', lang); } catch (_) {}
+      }
+      buttons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+      let initial = 'es';
+      try { initial = localStorage.getItem('modular-mind-language') || 'es'; } catch (_) {}
+      setLanguage(translations[initial] ? initial : 'es');
+    })();
+  </script>
 </body>
 </html>
