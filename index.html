@@ -56,16 +56,15 @@
     .link-secondary { color: #e0e0e0; background: #101010; border: 1px solid #707070; }
     .link:hover { filter: brightness(1.12); }
     .link:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
-    .arrow { font-size: 17px; line-height: 1; font-weight: 400; }
-    /* Compact language switch: fixed to the page, outside the main message. */
+    /* Language selector stays in normal flow: no overlap on narrow screens. */
     .language-switch {
-      position: absolute; top: max(18px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right));
-      display: flex; align-items: center; gap: 2px; padding: 3px;
+      position: static; display: flex; justify-content: center; align-items: center;
+      width: fit-content; max-width: 100%; margin: 0 auto 28px; gap: 2px; padding: 3px;
       border: 1px solid #393939; border-radius: 999px; background: #0a0a0a;
     }
     .language-button {
       display: inline-flex; align-items: center; justify-content: center; gap: 5px;
-      min-width: 65px; min-height: 42px; padding: 5px 9px; border: 0; border-radius: 999px;
+      min-width: 63px; min-height: 40px; padding: 5px 9px; border: 0; border-radius: 999px;
       background: transparent; color: #989898; font: 700 12px/1 'Source Sans 3', Arial, sans-serif;
       letter-spacing: .04em; cursor: pointer; transition: background .15s ease, color .15s ease;
     }
@@ -80,11 +79,11 @@
 </head>
 <body>
   <main>
-    <div class="language-switch" role="group" aria-label="Idioma / Language">
+    <div class="content">
+      <div class="language-switch" role="group" aria-label="Idioma / Language">
       <button type="button" class="language-button" data-lang="es" aria-label="Español" aria-pressed="true"><span class="language-flag" aria-hidden="true">🇪🇸</span> ES</button>
       <button type="button" class="language-button" data-lang="en" aria-label="English" aria-pressed="false"><span class="language-flag" aria-hidden="true">🇬🇧</span> EN</button>
-    </div>
-    <div class="content">
+      </div>
       <p class="eyebrow">MODULAR MIND [HALLOWEEN NIGHT]</p>
       <h1 id="headline">TE HEMOS<br>MENTIDO ;)</h1>
       <p class="no-beer" id="no-beer">NO HAY CERVEZA GRATIS.</p>
@@ -94,8 +93,8 @@
       <p class="address">C. de Bailén, 24 · Madrid</p>
       <p class="genres">TECHNO · HARD TECHNO · BOUNCE</p>
       <nav class="links" id="event-links" aria-label="Enlaces del evento">
-        <a class="link link-primary" href="https://es.ra.co/events/2569297" target="_blank" rel="noopener noreferrer">RESIDENT ADVISOR <span class="arrow" aria-hidden="true">↗</span></a>
-        <a class="link link-secondary" href="https://www.instagram.com/modularmind.madrid/" target="_blank" rel="noopener noreferrer">INSTAGRAM <span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="link link-primary" href="https://es.ra.co/events/2569297" target="_blank" rel="noopener noreferrer">RESIDENT ADVISOR</a>
+        <a class="link link-secondary" href="https://www.instagram.com/modularmind.madrid/" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
       </nav>
     </div>
   </main>
